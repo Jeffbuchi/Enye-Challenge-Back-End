@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
 
 
-exports.ratesController = async (req, res) => {
-  const base = req.query.base, currency = req.query.currency;
+exports.controlRates = async (req, res) => {
+  const rate = req.query.rate, currency = req.query.currency;
   try {
-    const response = await fetch(`https://api.exchangeratesapi.io/latest?base=${base}&symbols=${currency}`);
+    const response = await fetch(`https://api.exchangeratesapi.io/latest?base=${rate}&symbols=${currency}`);
     const data = await response.json();
 
     if (data.error) {
